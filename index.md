@@ -25,10 +25,11 @@ title: pyiron-node-store Repositories mit Properties
       {% assign current_repo_props = repo.custom_properties %}
       {% assign first_repo_props = site.data.repos_with_properties[0].custom_properties %}
       {% if first_repo_props %}
-        {% for pair in first_repo_props %}
+        {% for header_pair in first_repo_props %}
+          {% assign header_key = header_pair[0] %}
           <td>
-            {% if current_repo_props and current_repo_props[pair[0]] %}
-              {{ current_repo_props[pair[0]] }}
+            {% if current_repo_props and current_repo_props[header_key] %}
+              {{ current_repo_props[header_key] }}
             {% else %}
               -
             {% endif %}
