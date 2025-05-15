@@ -1,8 +1,15 @@
-ddEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const repoListDiv = document.getElementById('repo-list');
   if (repoListDiv) {
     fetch('https://api.github.com/orgs/pyiron-node-store/repos')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          console.error(`HTTP error! status: ${response.status}`);
+          repoListDiv.innerHTML = '<p>Fehler beim Laden der Repositories.</p>';
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
         let html = '<ul>';
         data.forEach(repo => {
@@ -12,7 +19,7 @@ ddEventListener('DOMContentLoaded', function() {
         repoListDiv.innerHTML = html;
       })
       .catch(error => {
-        console.error('Fehler beim Abrufen der Repos:', error);
+        console.error('Fetch error:', error);
         repoListDiv.innerHTML = '<p>Fehler beim Laden der Repositories.</p>';
       });
   } else {
