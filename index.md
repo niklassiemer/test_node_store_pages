@@ -9,10 +9,12 @@ title: pyiron-node-store Repositories mit Properties
   <tr>
     <th>Name</th>
     <th>URL</th>
-    <th>DEBUG: Type = {{ site.data.repos_with_properties[0].custom_properties | inspect }}</th>
     {% assign first_repo_props = site.data.repos_with_properties[0].custom_properties %}
     {% if first_repo_props %}
-      {% endif %}
+      {% for key in first_repo_props %}
+        <th>DEBUG: Key = {{ key }}</th>
+      {% endfor %}
+    {% endif %}
   </tr>
   </thead>
   <tbody>
