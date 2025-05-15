@@ -54,5 +54,5 @@ if __name__ == "__main__":
     print(f"Daten mit Custom Properties erfolgreich in {output_file} gespeichert.")
     
     with open(output_file, "r") as f:
-        print(json.dumps(json.read(f)))
+        print(json.dumps(json.load(f)))
 
