@@ -52,5 +52,7 @@ if __name__ == "__main__":
         json.dump(all_repos_data, f, indent=2)
 
     print(f"Daten mit Custom Properties erfolgreich in {output_file} gespeichert.")
-    print(json.dumps(all_repos_data, indent=2)) # Füge diese Zeile hinzu
+    
+    with open(output_file, "r") as f:
+        print(jsob.dumps(json.read(f))
 
