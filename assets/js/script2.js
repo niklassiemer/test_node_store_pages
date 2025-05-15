@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(data => {
         let html = '<ul>';
         data.forEach(repo => {
-          html += `<li><a href="<span class="math-inline">\{repo\.html\_url\}"\></span>{repo.name}</a></li>`;
+          html += `<li><a href="${repo.html_url}">${repo.name}</a></li>`;
         });
         html += '</ul>';
         repoListDiv.innerHTML = html;
