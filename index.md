@@ -1,6 +1,12 @@
 ---
 title: pyiron-node-store Repositories mit Properties
 ---
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/test_node_store_pages/assets/css/style.css">
+</head>
 
 <h1>{{ page.title }}</h1>
 
