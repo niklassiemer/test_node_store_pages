@@ -8,6 +8,10 @@ Welcome to My Home Page
 - Original date - {{ date }}
 - With timeago filter - {{ date | timeago }}
 
+# pyiron-node-store Repositories
 
-<script src="script.js"></script>
+<div id="repo-list">
+  </div>
+
+<script src="/assets/js/script.js"></script>
 
