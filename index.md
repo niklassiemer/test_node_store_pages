@@ -31,6 +31,19 @@ title: pyiron-node-store Repositories mit Properties
         {% endif %}
       </tr>
     {% endfor %}
+    {% for repo in site.data.repos_with_properties %}
+      <tr>
+        <td>{{ repo.name }}</td>
+        <td><a href="{{ repo.html_url }}">{{ repo.html_url }}</a></td>
+        {% assign current_repo_props = repo.custom_properties %}
+        {% assign first_repo_props = site.data.repos_with_properties[0].custom_properties %}
+        {% if first_repo_props %}
+          {% for key in first_repo_props %}
+            <td>Test</td>
+          {% endfor %}
+        {% endif %}
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 
