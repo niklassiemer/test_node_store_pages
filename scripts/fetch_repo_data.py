@@ -22,7 +22,10 @@ def get_custom_properties(repo_url):
     try:
         response = requests.get(custom_properties_url, headers=headers)
         response.raise_for_status()
-        return response.json()
+        properties = {}
+        for prop in response.json():
+            properties[prop["property_name"]] = prop["value"]
+        return properties
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             return {} # Keine Custom Properties gefunden
@@ -37,10 +40,8 @@ if __name__ == "__main__":
         repo_data = {
             "name": repo["name"],
             "html_url": repo["html_url"],
-            "custom_properties": None
+            "custom_properties": get_custom_properties(repo["url"]) or {}
         }
-        custom_props = get_custom_properties(repo["url"])
-        repo_data["custom_properties"] = custom_props
         all_repos_data.append(repo_data)
 
     # Speichere die Daten im _data-Ordner als repos_with_properties.json
